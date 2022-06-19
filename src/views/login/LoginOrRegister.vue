@@ -5,58 +5,58 @@
         <form action="#" class="sign-in-form">
           <h2 class="title">登录到小记</h2>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+            <i class="fa fa-user"></i>
             <input v-model="params.username" placeholder="用户名" type="text"/>
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <i class="fa fa-lock"></i>
             <input v-model="params.password" placeholder="密码" type="password"/>
           </div>
           <input class="btn solid" type="submit" value="登录" @click.prevent="login"/>
           <p class="social-text">Or Sign in with social platforms</p>
           <div class="social-media">
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('qq')">
-              <i class="fab fa-qq fa-1x"></i>
+              <i class="fa fa-qq fa-1x"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('weixin')">
-              <i class="fab fa-weixin"></i>
+              <i class="fa fa-weixin"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('github')">
-              <i class="fab fa-github fa-1x"></i>
+              <i class="fa fa-github fa-1x"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('weibo')">
-              <i class="fab fa-weibo"></i>
+              <i class="fa fa-weibo"></i>
             </a>
           </div>
         </form>
         <form action="#" class="sign-up-form">
           <h2 class="title">新用户</h2>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+            <i class="fa fa-user"></i>
             <input v-model="params.username" placeholder="用户名" type="text"/>
           </div>
           <div class="input-field">
-            <i class="fas fa-envelope"></i>
+            <i class="fa fa-envelope"></i>
             <input v-model="params.email" placeholder="邮箱" type="email"/>
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <i class="fa fa-lock"></i>
             <input v-model="params.password" placeholder="密码" type="password"/>
           </div>
           <input class="btn" type="submit" value="注册" @click.prevent="register"/>
           <p class="social-text">Or Sign up with social platforms</p>
           <div class="social-media">
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('qq')">
-              <i class="fab fa-qq fa-1x"></i>
+              <i class="fa fa-qq fa-1x"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('weixin')">
-              <i class="fab fa-weixin"></i>
+              <i class="fa fa-weixin"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('github')">
-              <i class="fab fa-github fa-1x"></i>
+              <i class="fa fa-github fa-1x"></i>
             </a>
             <a class="social-icon" href="javascript:void(0);" @click.prevent="thirdAuth('weibo')">
-              <i class="fab fa-weibo"></i>
+              <i class="fa fa-weibo"></i>
             </a>
           </div>
         </form>

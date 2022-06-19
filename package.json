@@ -9,12 +9,13 @@
     "mock": "node ./mock/mode2/mockServer"
   },
   "dependencies": {
-    "animate.css": "^3.7.2",
     "@element-plus/icons-vue": "^1.1.1",
     "@kangc/v-md-editor": "^2.3.12",
+    "animate.css": "^3.7.2",
     "axios": "^0.24.0",
     "echarts": "^5.2.2",
     "element-plus": "1.1.0-beta.13",
+    "font-awesome": "^4.7.0",
     "highlight.js": "^11.3.1",
     "jquery": "^3.6.0",
     "lodash.debounce": "^4.0.8",
