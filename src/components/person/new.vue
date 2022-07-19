@@ -15,7 +15,7 @@
             >
               <template #error>
                 <div class="image-slot">
-                  <img alt="default" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
+                  <img alt="default" :src="state.fileServerHost+'/14e8f1e9-1fd0-4da3-ad08-b6192d09f8bb.png'"/>
                 </div>
               </template>
             </el-image>

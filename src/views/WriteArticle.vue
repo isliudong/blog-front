@@ -16,7 +16,7 @@
             >
               <template #error>
                 <div class="image-slot">
-                  <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="default"/>
+                  <img :src="state.fileServerHost+'/14e8f1e9-1fd0-4da3-ad08-b6192d09f8bb.png'" alt="default"/>
                 </div>
               </template>
             </el-image>
@@ -58,7 +58,7 @@
     >
 
     </el-form>
-    <md-editor @editor-save="saveArticle" :text="state.formLabelAlign.content"></md-editor>
+    <md-editor @editor-save="saveArticle" :text="state.formLabelAlign.content" height="100vh"></md-editor>
   </div>
 </template>
 
@@ -166,6 +166,8 @@ export default defineComponent({
       }
       getTags();
     })
+
+
     const getArticleDetail = async (id: number) => {
       const data: Article = await service.get("/articles/{id}/detail".replace("{id}", id.toString()));
       state.formLabelAlign.content = data.content;

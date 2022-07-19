@@ -1,6 +1,5 @@
 <template>
-
-  <div>
+  <div class="head">
     <!--    pc导航-->
     <div
         v-if="!state.isMobile"
@@ -137,14 +136,7 @@
               class="item"
           >
             <span v-if="userInfo.username">{{ userInfo.username }}</span>
-            <span v-else>登 录</span>
-          </div>
-          <div
-              v-if="!userInfo.username"
-              @click="handleClickMenu('/register')"
-              class="item"
-          >
-            注 册
+            <span v-else @click="gologin()">登 录</span>
           </div>
           <div
               v-if="userInfo.username"
@@ -161,7 +153,7 @@
 </template>
 
 <script lang="ts">
-import {defineAsyncComponent, defineComponent, reactive,} from "vue";
+import {defineAsyncComponent, defineComponent, onMounted, reactive,} from "vue";
 import service from "../../utils/https";
 import urls from "../../utils/urls";
 import {useStore} from "vuex";
@@ -217,7 +209,52 @@ export default defineComponent({
     this.isMobile = isMobile();
     const code: string = getQueryStringByName("code");
     this.getUser(code);
+    let scrollTop = 0;
+    const hideNav=() =>{
+      let scrollTopTemp =
+          document.body.scrollTop || document.documentElement.scrollTop;
+      if (scrollTopTemp > 10) {
+        $(".head").hide(100);
+      } else {
+        $(".head").show(600);
+      }
+      if (scrollTop < scrollTopTemp) {
+        if (scrollTopTemp > 10) {
+          if (scrollTopTemp > 200) {
+            $(".head").css("top", "-72px");
+            scrollTop = scrollTopTemp;
+          } else {
+            $(".head").css({
+              background: "rgba(0,0,0,.8)",
+            });
+            scrollTop = scrollTopTemp;
+          }
+        } else {
+          $(".head").css("top", "0px");
+          $(".head").css({
+            background: "rgba(0,0,0,.8)",
+          });
+          scrollTop = scrollTopTemp;
+        }
+      } else {
+        if (scrollTop < 10) {
+          //小于50则说明快到顶了，这个时候就需要去掉之前加深的背景色，让他恢复原来的样子
+          $(".head").css("top", "0");
+          $(".head").css({
+            background: "none",
+          });
+        } else {
+          $(".head").css("top", "0");
+          $(".head").css({
+            background: "rgba(0,0,0,.8)",
+          });
+        }
+        scrollTop = scrollTopTemp;
+      }
+    };
+    window.addEventListener("scroll", hideNav);
   },
+
   setup(props, context) {
     const store = useStore(key);
     const router = useRouter();
@@ -231,6 +268,7 @@ export default defineComponent({
       window.localStorage.setItem("oldPath", JSON.stringify(preventHistory))
       router.push("/login")
     };
+
     const state = reactive({
       visible: false,
       handleFlag: "",
@@ -279,7 +317,6 @@ export default defineComponent({
         }
       }
     };
-
     const handleSelect = (val: string, oldVal: string): void => {
       state.activeIndex = val;
     };
@@ -372,6 +409,8 @@ export default defineComponent({
         state.isShow = false;
       }, 300);
     };
+
+
 
     return {
       state,

@@ -5,7 +5,7 @@
         v-model="state.text"
         :disabled-menus="[]"
         @upload-image="handleUploadImage"
-        height="100vh">
+        :height="height">
     </v-md-editor>
   </div>
 </template>
@@ -18,15 +18,13 @@ import fileService from "../../../utils/fileHttps";
 export default defineComponent({
   name: "MdEditor",
   props: {
-    text: String
+    text: String,
+    height: String
   },
   setup(props, context) {
     const state = reactive({
-      text: ""
+      text: "",
     })
-    const fun = () => {
-      console.log("123")
-    }
     const handleUploadImage = async (event, insertImage, files) => {
       // 拿到 files 之后上传到文件服务器，然后向编辑框中插入对应的内容
       console.log(files);
@@ -69,7 +67,6 @@ export default defineComponent({
     })
     return {
       state,
-      fun,
       handleSave,
       handleUploadImage
     }

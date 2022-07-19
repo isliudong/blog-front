@@ -11,6 +11,7 @@ import '@kangc/v-md-editor/lib/style/base-editor.css';
 import vuepressTheme from '\@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import Prism from 'prismjs';
+import $ from 'jquery/dist/jquery';
 import 'font-awesome/css/font-awesome.min.css'
 //import 'animate.css/animate.min.css'
 import "./assets/css/index.css";
@@ -25,6 +26,8 @@ VueMarkdownEditor.use(vuepressTheme, {
     Prism,
 });
 
+
+window.jQuery = window.$ = $;
 
 app.config.globalProperties.$https = service;
 app.config.globalProperties.$urls = urls;
