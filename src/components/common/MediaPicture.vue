@@ -88,7 +88,7 @@
 
 <script lang="ts">
 import {defineComponent, reactive, toRefs} from "vue";
-import CommentTest from "../../views/CommentTest.vue";
+import CommentTest from "../../views/Comment.vue";
 import VueStar from "./advanced_button/VueStar.vue";
 import {timestampToTime} from "../../utils/utils";
 import {Article} from "../../types";

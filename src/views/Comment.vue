@@ -65,7 +65,7 @@ export default {
     try {
       this.getUserInfo(JSON.parse(window.sessionStorage.userInfo).username)
     } catch (e) {
-      console.log(e)
+      console.log("user not login")
     }
     this.getComments(this.article.id)
   },

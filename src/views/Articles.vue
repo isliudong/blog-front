@@ -2,10 +2,7 @@
   <div>
     <Nav></Nav>
     <div class="main-page">
-      <el-row :gutter="20" style="margin: 0">
-        <el-col :lg="1" :md="1" :sm="1" :xl="1" :xs="0"
-        >
-        </el-col>
+      <el-row :gutter="20" style="margin: 0;justify-content: center">
         <el-col :lg="16" :md="18" :sm="18" :xl="18" :xs="24"
         >
           <div class="left clearfix">
@@ -33,10 +30,6 @@
 
           </div>
         </el-col>
-        <el-col :lg="1" :md="1" :sm="1" :xl="1" :xs="0"
-        >
-        </el-col>
-
       </el-row>
     </div>
   </div>

@@ -30,7 +30,6 @@
           </div>
           <div class="heart" v-show="state.articleDetail.content">
             <el-button @click="likeArticle"
-                       type=""
                        style="border: 0; background-color: transparent; text-align: center;margin-left: 26px">
               <vue-star style="margin: -42px -44px -33px -57px;" animate="yourAnimateCssClass"
                         color="rgb(152, 138, 222)">
@@ -142,7 +141,7 @@
   <el-backtop/>
 </template>
 <script lang="ts">
-import {defineComponent, onMounted, reactive} from "vue";
+import {defineComponent, nextTick, onMounted, onUpdated, reactive} from "vue";
 import service from "../utils/https";
 import urls from "../utils/urls";
 import {ElMessage} from "element-plus";
@@ -156,10 +155,13 @@ import CustomSlider from "../components/common/CustomSlider.vue";
 import {store} from "../store";
 import cookieUtils from "../utils/cookieUtils";
 import VueStar from "../components/common/advanced_button/VueStar.vue";
-import CommentTest from "./CommentTest.vue";
+import CommentTest from "./Comment.vue";
 import Nav from "../components/nav/Nav.vue";
 import {viewArticle} from "../api/article";
 
+// 点击图片放大
+import Viewer from 'viewerjs';
+import 'viewerjs/dist/viewer.css';
 
 export default defineComponent({
   name: "ArticleDetail",
@@ -212,6 +214,37 @@ export default defineComponent({
 
     const formatTime = (value: string | Date): string => {
       return timestampToTime(value, true);
+    };
+
+    const large = () => {
+      // 绑定图片放大事件，
+      //  图片放大容器
+        const ViewerDom = document.getElementsByClassName("article-detail")[0];
+        let imgs = ViewerDom.getElementsByTagName("img");
+        //遍历图片，绑定点击事件触发放大
+        for (let i = 0; i < imgs.length; i++) {
+          imgs[i].onclick = function () {
+            new Viewer(imgs[i], {
+              // 配置
+              navbar: false, // 显示缩略图导航
+              zoomRatio: 0.2, // 鼠标滚动时的缩放比例
+              movable: true, // 图片是否可移动
+              toolbar: { // 显示工具栏
+                zoomIn: 1,
+                zoomOut: 1,
+                oneToOne: 0,
+                reset: 1,
+                prev: 0,
+                play: 0,
+                next: 0,
+                rotateLeft: 1,
+                rotateRight: 1,
+                flipHorizontal: 0,
+                flipVertical: 0,
+              },
+            }).show();
+          };
+        }
     };
 
     const getUser = async (): Promise<void> => {
@@ -382,6 +415,11 @@ export default defineComponent({
       }
       getUser()
       handleSearch();
+      //拿不到图片数组元素，暂时先这样写
+      setTimeout(() => {
+        large();
+      }, 200)
+
       setTimeout(() => {
         let id = location.href.substring(location.href.lastIndexOf('/') + 1);
         viewArticle(Number.parseInt(id));

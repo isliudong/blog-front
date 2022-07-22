@@ -121,7 +121,7 @@
 <script lang="ts">
 import {defineComponent, nextTick, onMounted, reactive} from 'vue'
 import VueStar from "../common/advanced_button/VueStar.vue";
-import CommentTest from "../../views/CommentTest.vue";
+import CommentTest from "../../views/Comment.vue";
 import CustomSlider from "../common/CustomSlider.vue";
 import LoadEnd from "../common/load/LoadEnd.vue";
 import LoadingCustom from "../common/load/Loading.vue";
