@@ -9,7 +9,7 @@
     <br />
     <a href="http://xn--fjqz24bfqeo5p.site/login" target="blank"><strong>🌎 访问DEMO</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a href="https://github.com/isliudong/blog-front" target="blank"><strong>📦️ github源码</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a target="blank"><strong>💬 技术交流群qq 682811976</strong></a>
+    <a target="blank"><strong>💬 技术交流群qq 720603526</strong></a>
     <br />
     <br />
   </p>

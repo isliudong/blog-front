@@ -1,8 +1,12 @@
 <template>
   <Nav></Nav>
-  <el-row :gutter="20" class="under-nav" style="">
+  <div class="toc">
+    <el-button type="warning" class="toc_b"  @click="state.toc = !state.toc">目录</el-button>
+  </div>
+  <el-row :gutter="20" class="under-nav" style="justify-content: center">
     <el-col :xs="0" :sm="state.articleDetail.toc?6:2" :md="state.articleDetail.toc?6:2"
             :lg="state.articleDetail.toc?5:1" :xl="state.articleDetail.toc?3:1"
+            v-if="state.toc"
     >
       <div
           v-if="!state.isMobile&&state.articleDetail.toc"
@@ -11,8 +15,8 @@
       >
       </div>
     </el-col>
-    <el-col :xs="24" :sm="state.articleDetail.toc?14:18" :md="state.articleDetail.toc?12:16"
-            :lg="state.articleDetail.toc?14:18" :xl="state.articleDetail.toc?17:19"
+    <el-col :xs="24" :sm="state.articleDetail.toc&&state.toc?14:20" :md="state.articleDetail.toc&&state.toc?12:16"
+            :lg="state.articleDetail.toc&&state.toc?14:18" :xl="state.articleDetail.toc&&state.toc?17:19"
     >
       <span id="product_video" style="margin-top: -102px;padding-top: 102px;"></span>
       <div class="grid-content bg-purple-light">
@@ -141,7 +145,7 @@
   <el-backtop/>
 </template>
 <script lang="ts">
-import {defineComponent, nextTick, onMounted, onUpdated, reactive} from "vue";
+import {defineComponent, nextTick, onMounted, onUpdated, reactive, ref} from "vue";
 import service from "../utils/https";
 import urls from "../utils/urls";
 import {ElMessage} from "element-plus";
@@ -162,6 +166,7 @@ import {viewArticle} from "../api/article";
 // 点击图片放大
 import Viewer from 'viewerjs';
 import 'viewerjs/dist/viewer.css';
+import TocHelper from "toc-helper";
 
 export default defineComponent({
   name: "ArticleDetail",
@@ -179,6 +184,7 @@ export default defineComponent({
       btnLoading: false,
       isLoadEnd: false,
       isLoading: false,
+      toc: false,
       isMobile: isMobile(),
       params: {
         id: "",
@@ -418,7 +424,7 @@ export default defineComponent({
       //拿不到图片数组元素，暂时先这样写
       setTimeout(() => {
         large();
-      }, 200)
+      }, 500)
 
       setTimeout(() => {
         let id = location.href.substring(location.href.lastIndexOf('/') + 1);
@@ -617,6 +623,23 @@ export default defineComponent({
   display: block;
   height: 0;
   overflow: hidden;
+}
+
+.toc {
+  top:60px;
+  position: fixed;
+  z-index: 1000000001;
+  left: -62px !important;
+  overflow: visible;
+  transition: transform 0.4s ease-in 0s;
+  display: block;
+}
+
+.toc:hover {
+  transform: translateX(62px);
+}
+
+.toc_b {
 }
 </style>
 
