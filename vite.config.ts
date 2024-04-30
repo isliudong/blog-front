@@ -2,6 +2,7 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
 import path from 'path'
+import config from "./src/utils/config";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -55,7 +56,7 @@ export default defineConfig({
                 rewrite: (pathStr) => pathStr.replace('/development', '')
             },
             '/test': {
-                target: 'http://快乐星球.site:9090/',
+                target: 'http://141.147.189.7:9090/',
                 changeOrigin: true,
                 ws: true,
                 rewrite: (pathStr) => pathStr.replace('/test', '')
@@ -67,7 +68,7 @@ export default defineConfig({
                 rewrite: (pathStr) => pathStr.replace('/fileSever-dev', '')
             },
             '/fileSever-tes': {
-                target: "http://快乐星球.site:8211",
+                target: "http://141.147.189.7:8211",
                 changeOrigin: true,
                 ws: true,
                 rewrite: (pathStr) => pathStr.replace('/fileSever-tes', '')

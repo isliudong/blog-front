@@ -164,6 +164,7 @@ import {getQueryStringByName, isMobile} from "../../utils/utils";
 import {NavListItem, UserInfo} from "../../types";
 import cookieUtils from "../../utils/cookieUtils";
 import SearchInput from "../common/SearchInput.vue";
+import config from "../../utils/config";
 
 export default defineComponent({
   name: "Nav",
@@ -393,7 +394,7 @@ export default defineComponent({
         id: data.id,
         token: data.token,
         username: data.username,
-        avatar: data.avatar,
+        avatar: config.fileServerHost + "/" + data.avatar,
       };
       store.commit("SAVE_USER", {
         userInfo,

@@ -4,7 +4,7 @@
       <!-- 评论或回复人头像 -->
       <img
         class="avatar"
-        :src="comment.user.avatar || ''"
+        :src="fileServer+'/'+comment.user.avatar || ''"
         @error="(e) => e.target.classList.add('error')"
         alt=""
       >
@@ -110,6 +110,8 @@
 </template>
 
 <script lang="ts">
+import config from "utils/config";
+
 export default {
   name: 'CommentItem',
   props: {
@@ -129,6 +131,11 @@ export default {
     user: {
       type: Object,
       default: () => {}
+    }
+  },
+  data() {
+    return {
+      fileServer: config.fileServer
     }
   },
   computed: {

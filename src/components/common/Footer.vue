@@ -5,7 +5,7 @@
     <div style="color: #000000">技术交流群：720603526</div>
     <div class="number">
       <a style="color: #000000" href="http://www.beian.miit.gov.cn" target="_blank"
-      >蜀ICP备2022004289号</a
+      >蜀ICP备2023035362号</a
       >
     </div>
   </div>

@@ -21,6 +21,7 @@ import {UserInfo} from "../../types";
 import service from "../../utils/https";
 import cookieUtils from "../../utils/cookieUtils";
 import urls from "../../utils/urls";
+import config from "../../utils/config";
 
 export default defineComponent({
   setup(props, context) {
@@ -43,7 +44,7 @@ export default defineComponent({
             const userInfo: UserInfo = {
               token: "Bearer " + authData.token,
               username: data.username,
-              avatar: data.avatar,
+              avatar: config.fileServerHost + "/" + data.avatar,
               id: data.id
             };
             store.commit("SAVE_USER", {

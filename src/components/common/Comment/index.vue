@@ -6,7 +6,7 @@
           class="avatar"
           style="align-self: center"
           alt="头像"
-          :src="user.avatar || ''"
+          :src="'http://xn--fjqz24bfqeo5p.site:8211/'+user.avatar || ''"
           @error="(e) => e.target.classList.add('error')"
       >
     </comment-form>

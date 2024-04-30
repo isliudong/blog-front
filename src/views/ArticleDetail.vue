@@ -167,6 +167,7 @@ import {viewArticle} from "../api/article";
 import Viewer from 'viewerjs';
 import 'viewerjs/dist/viewer.css';
 import TocHelper from "toc-helper";
+import config from "../utils/config";
 
 export default defineComponent({
   name: "ArticleDetail",
@@ -274,7 +275,7 @@ export default defineComponent({
         id: data.id,
         token: data.token,
         username: data.username,
-        avatar: data.avatar,
+        avatar: config.fileServerHost + "/" + data.avatar,
       };
       store.commit("SAVE_USER", {
         userInfo,
